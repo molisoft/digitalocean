@@ -1,11 +1,11 @@
-# Digitalocean Rubygem 
+# Digitalocean Rubygem
 
 ![](https://raw.github.com/scottmotte/digitalocean/master/digitalocean-rubygem.jpg)
 
-### The easiest and most complete rubygem for [DigitalOcean](https://www.digitalocean.com). 
+### The easiest and most complete rubygem for [DigitalOcean](https://www.digitalocean.com).
 
-[![BuildStatus](https://travis-ci.org/scottmotte/digitalocean.png?branch=master)](https://travis-ci.org/scottmotte/digitalocean)
-[![Gem Version](https://badge.fury.io/rb/digitalocean.png)](http://badge.fury.io/rb/digitalocean)
+[![Build Status](https://travis-ci.org/scottmotte/digitalocean.svg?branch=master)](https://travis-ci.org/scottmotte/digitalocean)
+[![Gem Version](https://badge.fury.io/rb/digitalocean.svg)](http://badge.fury.io/rb/digitalocean)
 
 ```ruby
 Digitalocean.client_id  = "your_client_id"
@@ -13,7 +13,7 @@ Digitalocean.api_key    = "your_api_key"
 result = Digitalocean::Droplet.all
 # =>
 # <RecursiveOpenStruct status="OK", droplets=[
-#   {"id"=>12345, "name"=>"dev", "image_id"=>2676, "size_id"=>63, "region_id"=>3, "backups_active"=>false, "ip_address"=>"198.555.55.55", "private_ip_address"=>nil, "locked"=>false, "status"=>"active", "created_at"=>"2013-06-12T03:07:14Z"}, 
+#   {"id"=>12345, "name"=>"dev", "image_id"=>2676, "size_id"=>63, "region_id"=>3, "backups_active"=>false, "ip_address"=>"198.555.55.55", "private_ip_address"=>nil, "locked"=>false, "status"=>"active", "created_at"=>"2013-06-12T03:07:14Z"},
 #   {"id"=>234674, "name"=>"server2", "image_id"=>441012, "size_id"=>62, "region_id"=>1, "backups_active"=>false, "ip_address"=>"192.555.55.56", "private_ip_address"=>nil, "locked"=>false, "status"=>"active", "created_at"=>"2013-06-17T00:30:12Z"}
 # ]>
 #
@@ -71,7 +71,7 @@ Digitalocean::Droplet.find("id_of_droplet")
 ### Create Droplet
 
 ```ruby
-Digitalocean::Droplet.create({:name => droplet_name, :size_id => size_id, :image_id => image_id, :region_id => region_id)
+Digitalocean::Droplet.create({:name => droplet_name, :size_id => size_id, :image_id => image_id, :region_id => region_id})
 ```
 ## Available Commands
 
@@ -92,6 +92,7 @@ Digitalocean::Droplet.power_on(id)
 Digitalocean::Droplet.snapshot(id, {name: name})
 Digitalocean::Droplet.create({name: name, size_id: size_id, image_id: image_id, region_id: region_id, ssh_key_ids: ssh_key_ids})
 Digitalocean::Droplet.destroy(id)
+Digitalocean::Droplet.resize(id, {size_id: size_id})
 
 Digitalocean::Image.all
 Digitalocean::Image.all({filter: "my_images"})
@@ -113,14 +114,14 @@ Digitalocean::Size.find(size_id)
 
 Digitalocean::SshKey.all
 Digitalocean::SshKey.find(id)
-Digitalocean::SshKey.create({name: name, ssh_pub_key: ssh_pub_key})
+Digitalocean::SshKey.create({name: name, ssh_pub_key: ssh_pub_key}) # Keep in mind you have to use CGI::escape for your ssh_pub_key
 
 Digitalocean::Event.find(id)
 ```
 
 ## Example
 
-There is a [digitalocean-rubygem-example](https://github.com/scottmotte/digitalocean-rubygem-example) to help jumpstart your development. 
+There is a [digitalocean-rubygem-example](https://github.com/scottmotte/digitalocean-rubygem-example) to help jumpstart your development.
 
 ## Contributing
 
